@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    
+    <data>
+        <variable
+            name="pokemon"
+            type="com.alpertign.pokemon.model.Pokemon" />
+
+
+        <variable
+            name="listener"
+            type="com.alpertign.pokemon.adapter.PokemonClickListener" />
+    </data>
+
+<androidx.cardview.widget.CardView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    app:cardBackgroundColor="#ECECEC"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    android:layout_margin="5dp"
+
+    >
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:layout_margin="5dp"
+    android:onClick="@{listener::onPokemonClicked}"
+    >
+
+    <ImageView
+        android:id="@+id/iv_pokemon_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:downloadUrl="@{pokemon.imageUrl}"
+        android:layout_weight="1"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:orientation="vertical"
+        android:layout_weight="4">
+
+        <TextView
+            android:id="@+id/tv_pokemon_uuid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@{String.valueOf(pokemon.uuid)}">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_name_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{pokemon.name}"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/tv_description_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{pokemon.description}"
+            android:layout_marginTop="5dp"
+            ></TextView>
+
+    </LinearLayout>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+</layout>
